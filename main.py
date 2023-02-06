@@ -1,6 +1,10 @@
 import PySimpleGUI as sg
-
+import os
 import processes
+
+if not os.path.exists('todos.txt'):
+    with open('todos.txt', 'w') as file_local:
+        pass
 
 sg.theme('Topanga')
 
@@ -26,8 +30,6 @@ box = sg.Window("TO-DO",
 
 while True:
     event, value = box.read()
-    print(event)
-    print(value)
     match event:
         case 'ADD':
             todos = processes.get_todos()
